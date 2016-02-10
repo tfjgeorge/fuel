@@ -150,7 +150,7 @@ class DownscaleMinDimension(SourcewiseTransformer, ExpectsAxisLabels):
         if example.ndim > 3 or example.ndim < 2:
             raise NotImplementedError
         original_height, original_width = example.shape[-2:]
-        if original_height > self.min_dimension_size and original_width > self.min_dimension_size:
+        if True or original_height > self.min_dimension_size and original_width > self.min_dimension_size:
             dt = example.dtype
             # If we're dealing with a colour image, swap around the axes
             # to be in the format that PIL needs.
