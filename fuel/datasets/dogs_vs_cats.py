@@ -1,5 +1,4 @@
 from fuel.datasets import H5PYDataset
-from fuel.transformers import ScaleAndShift
 from fuel.utils import find_in_data_path
 
 
@@ -21,8 +20,7 @@ class DogsVsCats(H5PYDataset):
     """
     filename = 'dogs_vs_cats.hdf5'
 
-    default_transformers = ((ScaleAndShift, [1 / 255.0, 0],
-                             {'which_sources': 'image_features'}),)
+    default_transformers = ()
 
     def __init__(self, which_sets, **kwargs):
         super(DogsVsCats, self).__init__(
