@@ -216,9 +216,9 @@ class RandomFixedSizeCrop(SourcewiseTransformer, ExpectsAxisLabels):
         super(RandomFixedSizeCrop, self).__init__(data_stream, **kwargs)
 
     def transform_source_batch(self, source, source_name):
-        self.verify_axis_labels(('batch', 'channel', 'height', 'width'),
-                                self.data_stream.axis_labels[source_name],
-                                source_name)
+        # self.verify_axis_labels(('batch', 'channel', 'height', 'width'),
+        #                         self.data_stream.axis_labels[source_name],
+        #                         source_name)
         windowed_height, windowed_width = self.window_shape
         if isinstance(source, numpy.ndarray) and source.ndim == 4:
             # Hardcoded assumption of (batch, channels, height, width).
@@ -246,9 +246,9 @@ class RandomFixedSizeCrop(SourcewiseTransformer, ExpectsAxisLabels):
                              "ndim = 4")
 
     def transform_source_example(self, example, source_name):
-        self.verify_axis_labels(('channel', 'height', 'width'),
-                                self.data_stream.axis_labels[source_name],
-                                source_name)
+        # self.verify_axis_labels(('channel', 'height', 'width'),
+        #                         self.data_stream.axis_labels[source_name],
+        #                         source_name)
         windowed_height, windowed_width = self.window_shape
         if not isinstance(example, numpy.ndarray) or example.ndim != 3:
             raise ValueError("uninterpretable example format; expected "
